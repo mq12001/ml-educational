@@ -23,23 +23,33 @@ function createModel(layers, nodes) {
 }
 
 async function trainModel(model, points, callback) {
-    // Prepare the input and output tensors
-    const xs = tf.tensor2d(points.map(({ x, y }) => [x / 400, y / 400])); // Normalize inputs to [0, 1]
-    const ys = tf.tensor2d(points.map(({ color }) => (color === 'red' ? 1 : 0)), [points.length, 1]); // Target output
+    const xs = tf.tensor2d(points.map(({ x, y }) => [x / canvas.width, y / canvas.height]));
+    const ys = tf.tensor2d(points.map(({ color }) => (color === 'red' ? 1 : 0)), [points.length, 1]);
 
-    // Train the model
     await model.fit(xs, ys, {
-        epochs: 100, // Number of training iterations
+        epochs: 100,
+        batchSize: 8,
         callbacks: {
-            onEpochEnd: (epoch, logs) => console.log(`Epoch ${epoch + 1}: Loss = ${logs.loss}`),
+            onEpochEnd: (epoch, logs) => {
+                console.log(`Epoch ${epoch + 1}: Loss = ${logs.loss}`);
+
+                // Update chart data
+                chart.data.datasets[0].data.push(logs.loss); // Loss
+                chart.data.datasets[1].data.push(logs.acc); // Accuracy
+                chart.update(); // Refresh the chart
+
+                if ((epoch + 1) % 10 === 0) { // Update every 10 epochs
+                    clearCanvas();
+                    updateBackground(model);
+
+                }
+            },
         },
     });
 
-    // Cleanup tensors
     xs.dispose();
     ys.dispose();
 
-    // Trigger the callback after training completes
     callback();
 }
 

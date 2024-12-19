@@ -10,17 +10,35 @@
 
 <body>
     <div class="container">
-        <canvas id="graph" width="400" height="400"></canvas>
-        <div class="controls">
-            <label for="layers">Layers:</label>
-            <input type="number" id="layers" min="1" max="3" value="1">
-            <label for="nodes">Nodes:</label>
-            <input type="number" id="nodes" min="1" max="10" value="3">
+        <!-- Points Selection Block -->
+        <div class="block" id="pointsBlock">
+            <h2>Select Points</h2>
+            <canvas id="graph" width="400" height="400"></canvas>
+        </div>
+
+        <!-- Neural Network Builder Block -->
+        <div class="block" id="builderBlock">
+            <h2>Build Neural Network</h2>
+            <div>
+                <label for="layers">Layers:</label>
+                <input type="number" id="layers" min="1" max="5" value="1">
+            </div>
+            <div>
+                <label for="nodes">Nodes per Layer:</label>
+                <input type="number" id="nodes" min="1" max="20" value="5">
+            </div>
             <button id="train">Train</button>
             <button id="reset">Reset</button>
         </div>
+
+        <!-- Graph Rendering Block -->
+        <div class="block" id="graphBlock">
+            <h2>Training Progress</h2>
+            <canvas id="chartCanvas" width="400" height="200"></canvas>
+        </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="model.js"></script>
     <script src="script.js"></script>
 </body>

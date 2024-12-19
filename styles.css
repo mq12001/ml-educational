@@ -1,32 +1,53 @@
+/* General Styles */
 body {
     font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    margin: 0;
+    min-height: 100vh;
     background-color: #f9f9f9;
 }
 
-.container {
+h2 {
     text-align: center;
 }
 
+/* Container for the blocks */
+.container {
+    display: flex;
+    flex-direction: row;
+    /* Align blocks side by side */
+    gap: 20px;
+    /* Space between blocks */
+    width: 100%;
+    max-width: 1200px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Individual blocks */
+.block {
+    flex: 1;
+    /* Equal width for each block */
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+/* Canvas for graphs */
 canvas {
-    border: 1px solid black;
     display: block;
-    margin: 0 auto;
-}
-
-.controls {
-    margin-top: 10px;
-}
-
-.controls label {
-    margin-right: 5px;
-}
-
-.controls input {
-    width: 50px;
-    margin-right: 10px;
+    margin: 10px 0;
+    max-width: 100%;
+    height: auto;
+    box-sizing: border-box;
+    /* Ensures padding and border are included in dimensions */
 }
