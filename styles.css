@@ -6,8 +6,15 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
-    background-color: #f9f9f9;
+    background-image: url('firefly.png');
+    /* Path to your image */
+    background-repeat: repeat;
+    /* Tile the image */
+    background-size: 300px 300px;
+    /* Adjust to exact size of tiles */
+    background-position: 0 0;
+    background-color: black;
+    /* Fallback color in case the image doesn't load */
 }
 
 h2 {
@@ -22,7 +29,7 @@ h2 {
     gap: 20px;
     /* Space between blocks */
     width: 100%;
-    max-width: 1200px;
+    max-width: 100px;
     padding: 20px;
     box-sizing: border-box;
 }
@@ -63,4 +70,55 @@ canvas {
     margin: 20px;
     vertical-align: top;
     text-align: center;
+}
+
+/* General body styling */
+body {
+    margin: 0;
+    padding: 0;
+    background-color: black;
+    color: white;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    /* Stack elements vertically */
+    align-items: center;
+    justify-content: center;
+}
+
+/* Chart container styling */
+.chart-container {
+    display: flex;
+    flex-direction: row;
+    /* Charts in a single row */
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+/* Main graph styling */
+.main-graph-container {
+    display: flex;
+    justify-content: center;
+    /* Center the main graph */
+    margin-top: 20px;
+}
+
+/* Chart styling */
+.chart {
+    border: 2px solid white;
+    background-color: #222;
+    /* Dark background for charts */
+    width: 300px;
+    height: 200px;
+}
+
+/* Main graph styling */
+#graph {
+    border: 2px solid white;
+    image-rendering: pixelated;
+    /* Pixel art effect */
+    width: 500px;
+    /* Larger width for the main graph */
+    height: 500px;
+    /* Keep it square */
 }

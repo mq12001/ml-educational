@@ -9,16 +9,8 @@
 </head>
 
 <body>
-    <div class="container">
-        <!-- Points Selection Block -->
-        <div class="block" id="pointsBlock">
-            <h2>Select Points</h2>
-            <canvas id="graph" width="400" height="400"></canvas>
-            <button id="trainAll">Train All Models</button>
-            <button id="reset">Reset Points</button>
-        </div>
-
-        <!-- Neural Network Builder Block -->
+    <!-- Chart Section -->
+    <div class="chart-container">
         <div class="block">
             <div id="model1" class="model">
                 <h2>Model 1</h2>
@@ -29,6 +21,11 @@
                 <canvas id="chart1" width="400" height="200"></canvas>
             </div>
 
+        </div>
+
+        <!-- Neural Network Builder Block -->
+        <div class="block">
+
             <div id="model2" class="model">
                 <h2>Model 2</h2>
                 <label for="layers2">Layers:</label>
@@ -37,6 +34,11 @@
                 <input type="number" id="nodes2" min="1" max="20" value="5">
                 <canvas id="chart2" width="400" height="200"></canvas>
             </div>
+
+        </div>
+
+        <!-- Neural Network Builder Block -->
+        <div class="block">
 
             <div id="model3" class="model">
                 <h2>Model 3</h2>
@@ -48,11 +50,25 @@
             </div>
         </div>
     </div>
+    </div>
+
+    <!-- Main Graph -->
+    <div class="main-graph-container">
+        <div class="block" id="pointsBlock">
+            <h2>Select Points</h2>
+            <canvas id="graph" width="400" height="400"></canvas>
+            <button id="trainAll">Train All Models</button>
+            <button id="reset">Reset Points</button>
+        </div>
+    </div>
+
+    <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="graph-script.js"></script>
-    <script src="model.js"></script>
     <script src="charts-script.js"></script>
+    <script src="model.js"></script>
 </body>
+
 
 </html>
