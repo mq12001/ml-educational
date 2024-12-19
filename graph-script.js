@@ -90,6 +90,7 @@ function updateBackground(models) {
         const cellSize = canvas.width / resolution;
         const threshold = 0.1; // Decision boundary threshold
 
+
         // Generate grid points
         const gridPoints = [];
         const step = 1 / resolution;
@@ -105,6 +106,8 @@ function updateBackground(models) {
             models.map((model) => model.predict(inputTensor).array())
         );
         inputTensor.dispose();
+
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
 
         // Render grid based on predictions
         for (let i = 0; i < resolution; i++) {
@@ -125,7 +128,7 @@ function updateBackground(models) {
                         if (modelIndex === 2) b = Math.max(b, intensity); // Blue for Model 3
                     }
                 });
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
+
                 // Render color for grid cell
                 ctx.fillStyle = `rgb(${r}, ${g}, ${b})`;
                 ctx.fillRect(i * cellSize, j * cellSize, cellSize, cellSize);

@@ -13,7 +13,7 @@
     <div class="chart-container">
         <div class="block">
             <div id="model1" class="model">
-                <h2>Model 1</h2>
+                <h2 style="color: red;"> Red Prism</h2>
                 <label for="layers1">Layers:</label>
                 <input type="number" id="layers1" min="1" max="5" value="1">
                 <label for="nodes1">Nodes:</label>
@@ -27,7 +27,7 @@
         <div class="block">
 
             <div id="model2" class="model">
-                <h2>Model 2</h2>
+                <h2 style="color: rgb(0,255,0);">Green Prism</h2>
                 <label for="layers2">Layers:</label>
                 <input type="number" id="layers2" min="1" max="5" value="1">
                 <label for="nodes2">Nodes:</label>
@@ -41,7 +41,7 @@
         <div class="block">
 
             <div id="model3" class="model">
-                <h2>Model 3</h2>
+                <h2 style="color: blue;">Blue Prism</h2>
                 <label for="layers3">Layers:</label>
                 <input type="number" id="layers3" min="1" max="5" value="1">
                 <label for="nodes3">Nodes:</label>
@@ -55,10 +55,10 @@
     <!-- Main Graph -->
     <div class="main-graph-container">
         <div class="block" id="pointsBlock">
-            <h2>Select Points</h2>
+            <h1>Place Your Fireflies</h1>
             <canvas id="graph" width="400" height="400"></canvas>
-            <button id="trainAll">Train All Models</button>
-            <button id="reset">Reset Points</button>
+            <button id="trainAll" style="margin-bottom: 10px;">Start Refracting!</button>
+            <button id="reset">Reset Fireflies</button>
         </div>
     </div>
 

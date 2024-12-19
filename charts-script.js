@@ -13,8 +13,25 @@ function createChart(canvasId) {
         options: {
             animation: false,
             scales: {
-                x: { title: { display: true, text: 'Epochs' }, min: 1, max: 200 },
-                y: { title: { display: true, text: 'Value' }, min: 0, max: 1 },
+                x: {
+                    title: { display: true, text: 'Epochs', color: 'white' }, min: 1, max: 200, ticks: {
+                        color: 'white', // X-axis tick color
+                    },
+                },
+                y: {
+                    title: { display: true, text: 'Value', color: 'white' }, min: 0, max: 1, ticks: {
+                        color: 'white', // X-axis tick color
+                    },
+                },
+
+            },
+
+            plugins: {
+                legend: {
+                    labels: {
+                        color: 'white', // Legend text color
+                    },
+                },
             },
         },
     });
