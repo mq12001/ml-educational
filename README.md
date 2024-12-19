@@ -1,1 +1,1 @@
-# ml-educational
+# Educational Tool for Machine Learning Basics
