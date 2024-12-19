@@ -22,26 +22,33 @@ function createModel(layers, nodes) {
     return model; // Return the TensorFlow.js model
 }
 
-async function trainModel(model, points, callback) {
-    const xs = tf.tensor2d(points.map(({ x, y }) => [x / canvas.width, y / canvas.height]));
-    const ys = tf.tensor2d(points.map(({ color }) => (color === 'red' ? 1 : 0)), [points.length, 1]);
+async function trainModel(model, points, chart, callback) {
+    const xs = tf.tensor2d(
+        points.map(({ x, y }) => [x / 400, y / 400]), // Normalize x and y
+        [points.length, 2] // Shape: [number of points, 2 features (x and y)]
+    );
+    const ys = tf.tensor2d(
+        points.map(({ color }) => (color === 'red' ? 1 : 0)), // Encode labels as 0 or 1
+        [points.length, 1] // Shape: [number of points, 1 output]
+    );
 
     await model.fit(xs, ys, {
-        epochs: 100,
-        batchSize: 8,
+        epochs: 200,
+        batchSize: 16,
         callbacks: {
-            onEpochEnd: (epoch, logs) => {
-                console.log(`Epoch ${epoch + 1}: Loss = ${logs.loss}`);
+            onEpochEnd: async (epoch, logs) => {
 
                 // Update chart data
                 chart.data.datasets[0].data.push(logs.loss); // Loss
                 chart.data.datasets[1].data.push(logs.acc); // Accuracy
-                chart.update(); // Refresh the chart
+                await chart.update(); // Refresh the chart
 
                 if ((epoch + 1) % 10 === 0) { // Update every 10 epochs
-                    clearCanvas();
-                    updateBackground(model);
-
+                    updateBackground(Object.values(modelRegistry));
+                }
+                // Execute additional callback logic
+                if (callback) {
+                    callback(epoch, logs);
                 }
             },
         },
@@ -49,8 +56,6 @@ async function trainModel(model, points, callback) {
 
     xs.dispose();
     ys.dispose();
-
-    callback();
 }
 
 function predict(model, input) {

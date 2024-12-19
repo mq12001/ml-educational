@@ -14,33 +14,45 @@
         <div class="block" id="pointsBlock">
             <h2>Select Points</h2>
             <canvas id="graph" width="400" height="400"></canvas>
+            <button id="trainAll">Train All Models</button>
+            <button id="reset">Reset Points</button>
         </div>
 
         <!-- Neural Network Builder Block -->
-        <div class="block" id="builderBlock">
-            <h2>Build Neural Network</h2>
-            <div>
-                <label for="layers">Layers:</label>
-                <input type="number" id="layers" min="1" max="5" value="1">
+        <div class="block">
+            <div id="model1" class="model">
+                <h2>Model 1</h2>
+                <label for="layers1">Layers:</label>
+                <input type="number" id="layers1" min="1" max="5" value="1">
+                <label for="nodes1">Nodes:</label>
+                <input type="number" id="nodes1" min="1" max="20" value="5">
+                <canvas id="chart1" width="400" height="200"></canvas>
             </div>
-            <div>
-                <label for="nodes">Nodes per Layer:</label>
-                <input type="number" id="nodes" min="1" max="20" value="5">
-            </div>
-            <button id="train">Train</button>
-            <button id="reset">Reset</button>
-        </div>
 
-        <!-- Graph Rendering Block -->
-        <div class="block" id="graphBlock">
-            <h2>Training Progress</h2>
-            <canvas id="chartCanvas" width="400" height="200"></canvas>
+            <div id="model2" class="model">
+                <h2>Model 2</h2>
+                <label for="layers2">Layers:</label>
+                <input type="number" id="layers2" min="1" max="5" value="1">
+                <label for="nodes2">Nodes:</label>
+                <input type="number" id="nodes2" min="1" max="20" value="5">
+                <canvas id="chart2" width="400" height="200"></canvas>
+            </div>
+
+            <div id="model3" class="model">
+                <h2>Model 3</h2>
+                <label for="layers3">Layers:</label>
+                <input type="number" id="layers3" min="1" max="5" value="1">
+                <label for="nodes3">Nodes:</label>
+                <input type="number" id="nodes3" min="1" max="20" value="5">
+                <canvas id="chart3" width="400" height="200"></canvas>
+            </div>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="graph-script.js"></script>
     <script src="model.js"></script>
-    <script src="script.js"></script>
+    <script src="charts-script.js"></script>
 </body>
 
 </html>

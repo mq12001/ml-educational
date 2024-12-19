@@ -27,6 +27,7 @@ h2 {
     box-sizing: border-box;
 }
 
+
 /* Individual blocks */
 .block {
     flex: 1;
@@ -42,6 +43,11 @@ h2 {
     justify-content: flex-start;
 }
 
+#graph {
+    background: black;
+}
+
+
 /* Canvas for graphs */
 canvas {
     display: block;
@@ -50,4 +56,11 @@ canvas {
     height: auto;
     box-sizing: border-box;
     /* Ensures padding and border are included in dimensions */
+}
+
+.model {
+    display: inline-block;
+    margin: 20px;
+    vertical-align: top;
+    text-align: center;
 }
