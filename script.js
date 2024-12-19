@@ -36,16 +36,25 @@ function clearCanvas() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 }
 
+function resetChart() {
+    chart.data.datasets.forEach((dataset) => {
+        dataset.data = []; // Clear dataset values
+    });
+    chart.update(); // Refresh the chart
+}
+
 // Reset button functionality
 document.getElementById('reset').addEventListener('click', () => {
     points.length = 0;
     clearCanvas();
+    resetChart();
 });
 
 // Train button functionality
 document.getElementById('train').addEventListener('click', () => {
     console.log('Train button clicked'); // Log to verify button press
     clearCanvas();
+    resetChart();
     // Redraw points on top
     points.forEach(({ x, y, color }) => drawPoint(x, y, color));
 
